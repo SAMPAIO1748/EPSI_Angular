@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { Hero } from '../types/hero.type';
 // On doit importer HeroDetailsComponenent pour pouvoir l'utiliser dans HeroListComponent
 import { HeroDetailsComponent } from '../hero-details/hero-details.component';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes-list',
@@ -15,16 +16,16 @@ import { HeroDetailsComponent } from '../hero-details/hero-details.component';
 export class HeroesListComponent {
 
   // Notre tableau devient un tableau d'élement de type Hero définit dans hero.types.ts
-  heroes: Hero[] = [
-    { id : 1, name : "Batman"},
-    { id : 2, name : "Superman"},
-    { id : 3, name : "Spider-man"},
-  ];
+  heroes?: Hero[] 
 
   selectedHero?: Hero;
 
-  constructor () {
+  constructor (private heroService: HeroService) {
     //console.log(this.heroes);
+  }
+
+  ngOnInit(){
+    this.heroes = this.heroService.getHeroes();
   }
 
   selectHero(hero: Hero){
