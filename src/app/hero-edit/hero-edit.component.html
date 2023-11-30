@@ -1,2 +1,16 @@
 <p>hero-edit works!</p>
-<h2>Edition du héros n° {{ id }}</h2>
+<h2>Edition du héros n° {{ hero?.id }}</h2>
+<h2>Edition du {{ hero?.name }}</h2>
+
+<form>
+
+    <p>
+        <label for="nameHero">Nom : </label>
+        <input type="text" [(ngModel)]="hero!.name" name="hero_name" id="nameHero" >
+    </p>
+
+    <p>
+        <input type="submit" value="Editer">
+    </p>
+
+</form>
