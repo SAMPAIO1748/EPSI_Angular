@@ -1,0 +1,14 @@
+<p>heroes-list works!</p>
+<h2>Bonjour</h2>
+
+<ul class="heroes">
+    <li  *ngFor="let hero of heroes">
+        <span class="badge" (click)="selectHero(hero)" [class.selected]="selectedHero == hero">
+            {{ hero.id }}
+        </span> 
+        {{ hero.name }}
+    </li>
+</ul>
+
+<app-hero-details *ngIf="selectedHero" [hero]="selectedHero"></app-hero-details>
+    

@@ -225,8 +225,21 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1>Hello, {{ title }}</h1>
+      <h1 [ngStyle]="titleStyle">Hello, {{ title }}, par {{ username }}</h1>
+      <button (click)="addHero()">Ajouter un héros</button>
+      <button (click)="deleteHero()">Supprimer un héros</button>
       <p>Congratulations! Your app is running. 🎉</p>
+      <p>
+          <label for="userName">Votre nom</label>
+          <input type="text" name="name" id="userName" [(ngModel)]="username">
+      </p>
+      <h3>Vos héros</h3>
+      <ul>
+        <li *ngFor="let hero of heroes">{{ hero }} <small *ngIf="hero === username">(c'est moi)</small></li>
+      </ul>
+      <label for="inputHeroName">Nom du héros</label>
+      <input type="text" name="nameOfHero" id="inputHeroName" [(ngModel)]="heroToAdd">
+      <button (click)="addHeroInArray()">Ajouter un héros</button>
    </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
@@ -322,6 +335,7 @@
       </div>
     </div>
   </div>
+
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
